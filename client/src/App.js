@@ -1,11 +1,12 @@
+import { Container } from "@material-ui/core";
 import React from "react";
 import Main from "./Main";
 
 const App = () => {
     return (
-        <div>
+        <Container>
             <Main />
-        </div>
+        </Container>
     );
 }
 
