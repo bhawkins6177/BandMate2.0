@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 // everythin that was in App.js in my first version should not be in Main.js so I can set up react routers. 
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
+import { useDispatch } from "react-redux";
+import { getSongs } from "./actions/songs";
+
 import Songs from "./components/Songs/Songs";
 import SongForm from "./components/SongForm/SongForm";
 // maybe put a logo in later? look at 32 min 
@@ -9,6 +12,12 @@ import useStyles from './styles';
 const Main = () => {
 
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(()=> {
+        dispatch(getSongs())
+    }, [dispatch])
+
     return(
         <Container maxidth="lg">
             <AppBar className = {classes.appBar} position="static" color="inherit">

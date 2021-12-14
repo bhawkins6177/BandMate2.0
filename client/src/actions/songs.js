@@ -3,7 +3,7 @@ import * as api from '../api';
 // action creators are functions that return an action, an action is just an object that has a type: and a payload:
 
 // wow redux-thunk has weird syntax 0_0
-export const getSongs = ()=> async (dispatch) => {
+export const getSongs = () => async (dispatch) => {
 
     try {
         const { data } = await api.fetchSongs(); 

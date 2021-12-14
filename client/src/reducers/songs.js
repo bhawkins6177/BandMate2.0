@@ -1,5 +1,8 @@
 
-export default (songs = [], action) => {// this is our default data
+
+
+
+export default (songs = [], action) => {
     switch (action.type) {
         case "FETCH_ALL":
             return action.payload;
@@ -9,5 +12,6 @@ export default (songs = [], action) => {// this is our default data
             return songs;
     }
 }
+
 
 
