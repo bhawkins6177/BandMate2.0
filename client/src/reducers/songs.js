@@ -4,6 +4,8 @@
 
 export default (songs = [], action) => {
     switch (action.type) {
+        case'UPDATE':
+            return songs.map((song)=> song._id == action.payload._id ? action.payload : song );
         case "FETCH_ALL":
             return action.payload;
         case "CREATE":
@@ -12,6 +14,8 @@ export default (songs = [], action) => {
             return songs;
     }
 }
+
+
 
 
 

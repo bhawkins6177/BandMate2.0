@@ -7,7 +7,7 @@ import useStyles from './styles'
 import { Grow } from '@material-ui/core';
 
 
-const Songs = () => {
+const Songs = ({setSongId, songId}) => {
     const songs = useSelector((state)=> state.songs)
     const classes = useStyles();
     console.log(songs);
@@ -19,7 +19,7 @@ const Songs = () => {
                 {
                     songs.map((song)=> (
                         <Grid key={song._id} item xs={12} sm={6}>
-                            <Song song={song}/>
+                            <Song song={song} setSongId={setSongId} songId={songId}/>
                         </Grid>
                     ))
                 }

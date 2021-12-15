@@ -23,3 +23,14 @@ export const createSong = (song) => async(dispatch) => {
         console.log(err);
     }
 } 
+
+export const updateSong = (id, song) => async (dispatch) => {
+    try {
+        const { data } = await api.updateSong(id, song);
+
+        dispatch({ type: 'UPDATE', payload: data})
+    } catch(err) {
+        console.log(err.message)
+    }
+
+}

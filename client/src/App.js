@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 // everythin that was in App.js in my first version should not be in Main.js so I can set up react routers. 
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import { useDispatch } from "react-redux";
@@ -12,12 +12,13 @@ import useStyles from './styles';
 
 const App = () => {
 
+    const [songId, setSongId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
 
     useEffect(()=> {
         dispatch(getSongs())
-    }, [dispatch])
+    }, [songId, dispatch])
 
     return(
         <Container maxWidth="lg">
@@ -29,10 +30,15 @@ const App = () => {
                 <Container>
                     <Grid container justifyContent='space-between'alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
-                            <Songs />
+                            <Songs 
+                            setSongId={setSongId}
+                            />
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <SongForm />
+                            <SongForm
+                                songId={songId} 
+                                setSongId={setSongId}
+                                />
                         </Grid>
                     </Grid>
                 </Container>

@@ -4,7 +4,7 @@ import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@ma
 
 // no icons, didnt work last time not sure why 
 
-const Song = ({song}) => {
+const Song = ({song, setSongId}) => {
     const classes = useStyles();
 
 // implement the instruments how the tags were implemented 
@@ -25,7 +25,7 @@ const Song = ({song}) => {
             <Button size='small' color='primary' onClick={()=>{}}>
                 Delete
             </Button>
-            <Button style={{color:'Blue'}} size='small' onClick={()=>{}}>
+            <Button style={{color:'Blue'}} size='small' onClick={()=>{setSongId(song._id)}}>
                 Edit
             </Button>
         </CardActions>

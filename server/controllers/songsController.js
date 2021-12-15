@@ -1,4 +1,6 @@
 import SongInstance from "../models/songModel.js" 
+import mongoose from 'mongoose';
+import songs from "../../client/src/reducers/songs.js";
 
 export const getSongs = async (req, res) => {
     try {
@@ -22,3 +24,16 @@ export const createSong = async (req, res) => {
         res.status(409).json({message:err.message});
     }
 };
+
+export const updateSong = async (req, res) => {
+    const { id: _id } = req.params;
+    const song = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send('Post with that ID does not exist')
+
+   const updatedSong = await SongInstance.findByIdAndUpdate(_id, song, {new:true});
+
+   res.json(updatedSong)
+
+}

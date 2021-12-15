@@ -1,14 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
-
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import useStyles from './styles'
-import { createSong } from '../../actions/songs';
+import { createSong,updateSong } from '../../actions/songs';
 
-const SongForm = () => {
+
+const SongForm = ({songId, setSongId}) => {
     const classes = useStyles();
+    const song = useSelector((state)=> songId ? state.songs.find((s)=>s._id== songId): null);
+    const dispatch = useDispatch();
 
+    useEffect(()=>{
+        if(song) setSongData(song)
+    },[song])
     const [songData, setSongData] = useState({
         title: '',
         composer: '',
@@ -21,15 +26,24 @@ const SongForm = () => {
         otherNotes: '' 
     });
 
-    const dispatch = useDispatch();
+   
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        dispatch(createSong(songData));
+        
+        
+        if(songId){
+            dispatch(updateSong(songId, songData))
+        } else {
+            dispatch(createSong(songData));
+        }
+        clear();
     }
 
-    const clear = (e) =>{ 
-        e.preventDefault();
+
+    const clear = () =>{ 
+        //e.preventDefault();
+        setSongId(null);
         setSongData({
         title: '',
         composer: '',
@@ -47,7 +61,7 @@ const SongForm = () => {
     return (
         <Paper className={classes.paper}>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography varient='h6'>Add a Song</Typography>
+                <Typography varient='h6'>{songId ? 'Editing ' : 'Add '}a Song</Typography>
                 <TextField 
                 name = 'title' 
                 variant = 'outlined' 
