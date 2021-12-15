@@ -61,6 +61,14 @@ const SongForm = () => {
                 value={songData.originalKey }
                 onChange={(e) => setSongData({...songData, originalKey: e.target.value })}
                 />
+                <TextField 
+                name = 'otherNotes' 
+                variant = 'outlined' 
+                label='Othe Notes' 
+                fullWidth 
+                value={songData.otherNotes}
+                onChange={(e) => setSongData({...songData, otherNotes: e.target.value })}
+                />
                 <Button className={classes.buttonSubmit} varient='contained' color='primary' size='large' type='submit' fullWidth>Submit</Button>
                 <Button varient='contained' color='secondary' size='small' onClick={clear} fullWidth>Clear</Button>
             </form>
