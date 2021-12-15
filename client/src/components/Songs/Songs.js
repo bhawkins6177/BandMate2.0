@@ -10,6 +10,7 @@ import { Grow } from '@material-ui/core';
 const Songs = () => {
     const songs = useSelector((state)=> state.songs)
     const classes = useStyles();
+    console.log(songs);
 
     console.log(songs)
     return (

@@ -7,25 +7,26 @@ import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@ma
 const Song = ({song}) => {
     const classes = useStyles();
 
-
+// implement the instruments how the tags were implemented 
     return(
         <Card className={classes.card}>
-           <CardMedia className={classes.media} title={song.title}/>
+           <Typography variant='h6'>{`Title: ${song.title}`}</Typography>
         <div className={classes.overlay}>
-            <Typography variant='h6'>{song.composer}</Typography>
-            <Typography varient='h4'>{song.originalKey}</Typography>
+            <Typography variant='h6'>{`Writer: ${song.composer}`}</Typography>
+            <Typography varient='h6'>{`Original Key: ${song.originalKey}`}</Typography>
+            <Typography varient='h8' color='textSecondary'>Instruments: {song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
         </div>
         <div className={classes.overlay2}>
-            <Button style={{color:'Blue'}} size='small' onClick={()=>{}}>
-
-            </Button>
         </div>
         <CardContent>
-            <Typography className={classes.title} variant='h5'gutterBottom>{song.otherNotes}</Typography>
+            <Typography className={classes.title} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
             <Button size='small' color='primary' onClick={()=>{}}>
                 Delete
+            </Button>
+            <Button style={{color:'Blue'}} size='small' onClick={()=>{}}>
+                Edit
             </Button>
         </CardActions>
         </Card>

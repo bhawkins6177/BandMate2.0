@@ -30,6 +30,17 @@ const SongForm = () => {
 
     const clear = (e) =>{ 
         e.preventDefault();
+        setSongData({
+        title: '',
+        composer: '',
+        instruments: [],
+        originalKey: '',
+        maleLead: false,
+        femalLead: false,
+        duet: false,
+        difficulty: '',
+        otherNotes: '' 
+        })
     }
 
 
@@ -64,11 +75,21 @@ const SongForm = () => {
                 <TextField 
                 name = 'otherNotes' 
                 variant = 'outlined' 
-                label='Othe Notes' 
+                label='Other Notes' 
                 fullWidth 
                 value={songData.otherNotes}
                 onChange={(e) => setSongData({...songData, otherNotes: e.target.value })}
                 />
+                <TextField
+                name='instruments'
+                variant='outlined'
+                label='Instruments(seperate w/comma)'
+                fullWidth
+                multiline
+                value={songData.instruments}
+                onChange={(e)=>setSongData({...songData, instruments: e.target.value.split(',')})}
+                />
+               
                 <Button className={classes.buttonSubmit} varient='contained' color='primary' size='large' type='submit' fullWidth>Submit</Button>
                 <Button varient='contained' color='secondary' size='small' onClick={clear} fullWidth>Clear</Button>
             </form>
