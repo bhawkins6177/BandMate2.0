@@ -2,13 +2,13 @@ import React, {useState, useEffect} from "react";
 // everythin that was in App.js in my first version should not be in Main.js so I can set up react routers. 
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import { useDispatch } from "react-redux";
-import { getSongs } from "./actions/songs";
+import { getSongs } from "./actions/songs.js";
 
-import Songs from "./components/Songs/Songs";
-import SongForm from "./components/SongForm/SongForm";
+import Songs from "./components/Songs/Songs.js";
+import SongForm from "./components/SongForm/SongForm.js";
 import bandmateimage from './images/bandmate.png'
 // maybe put a logo in later?
-import useStyles from './styles';
+import useStyles from './styles.js';
 
 const App = () => {
 
