@@ -16,17 +16,17 @@ const Song = ({song, setSongId}) => {
 
     
     return(
-        <Card >
+        <Card className={classes.card}>
            <Typography variant='h4'>{song.title}</Typography>
         <div className={classes.overlay}>
             <Typography color='textSecondary' variant='h6'>{song.composer}</Typography>
             <Typography varient='h6'>{`Original Key: ${song.originalKey}`}</Typography>
-            <Typography varient='h8' color='textSecondary'>{song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
+            <Typography varient='h6' color='textSecondary'>{song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
         </div>
         <div className={classes.overlay2}>
         </div>
         <CardContent>
-            <Typography component='p' className={classes.title} variant='h8'gutterBottom>Notes: {song.otherNotes}</Typography>
+            <Typography component='p' className={classes.title} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
             <Button size='small' color='primary' onClick={()=>dispatch(deleteSong(song._id))}>
