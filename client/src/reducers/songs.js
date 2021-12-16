@@ -5,13 +5,13 @@
 export default function songs (songs = [], action){
     switch (action.type) {
         case'UPDATE':
-            return songs.map((song)=> song._id === action.payload._id ? action.payload : song );
+            return songs.map((element)=> element._id === action.payload._id ? action.payload : element );
         case "FETCH_ALL":
             return action.payload;
         case "CREATE":
             return [...songs, action.payload];
         case "DELETE":
-            return songs.filter((song)=>song._id !== action.payload);
+            return songs.filter((element)=>element._id !== action.payload);
         default:
             return songs;
     }

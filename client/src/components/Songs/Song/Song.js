@@ -1,17 +1,22 @@
 import React from "react";
-import useStyles from './styles'
-import {Borders, Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
+import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import {deleteSong} from "../../../actions/songs";
+import useStyles from './styles'       // my styles are not working for some reason
+
 // no icons, didnt work last time not sure why 
 
+
+
+
 const Song = ({song, setSongId}) => {
-
     const dispatch = useDispatch();
-
     const classes = useStyles();
+    
+
+    
     return(
-        <Card className={classes.card}>
+        <Card >
            <Typography variant='h4'>{song.title}</Typography>
         <div className={classes.overlay}>
             <Typography color='textSecondary' variant='h6'>{song.composer}</Typography>

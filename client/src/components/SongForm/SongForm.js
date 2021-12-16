@@ -8,7 +8,7 @@ import { createSong,updateSong } from '../../actions/songs';
 
 const SongForm = ({songId, setSongId}) => {
     const classes = useStyles();
-    const song = useSelector((state)=> songId ? state.songs.find((s)=>s._id== songId): null);
+    const song = useSelector((state)=> songId ? state.songs.find((s)=>s._id === songId): null);
     const dispatch = useDispatch();
 
     useEffect(()=>{
