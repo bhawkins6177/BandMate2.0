@@ -10,6 +10,8 @@ export default function songs (songs = [], action){
             return action.payload;
         case "CREATE":
             return [...songs, action.payload];
+        case "DELETE":
+            return songs.filter((song)=>song._id !== action.payload);
         default:
             return songs;
     }

@@ -1,6 +1,6 @@
 import SongInstance from "../models/songModel.js" 
 import mongoose from 'mongoose';
-//import songs from "../../client/src/reducers/songs.js";
+//import songs from "../../client/src/reducers/songs.js";// THIS WAS THE PROBLEM OMG STUPID AUTOMATIC IMPORTS
 
 export const getSongs = async (req, res) => {
     try {
@@ -32,8 +32,23 @@ export const updateSong = async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send('Post with that ID does not exist')
 
+   // {...song, _id} if you need to replace "song" on line 37 with this object
+
    const updatedSong = await SongInstance.findByIdAndUpdate(_id, song, {new:true});
 
    res.json(updatedSong)
+
+} 
+
+export const deleteSong = async (req, res) => {
+    const { id } = req.params;
+    const song = req.body;
+    console.log('did delete work??')
+    if(!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send('Post with that ID does not exist')
+
+    const deleteSong = await SongInstance.findByIdAndRemove(id)
+
+    res.json({message: 'Song has been deleted'}); 
 
 }

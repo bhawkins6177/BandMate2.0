@@ -1,28 +1,30 @@
 import React from "react";
 import useStyles from './styles'
-import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core';
-
+import {Borders, Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import {deleteSong} from "../../../actions/songs";
 // no icons, didnt work last time not sure why 
 
 const Song = ({song, setSongId}) => {
-    const classes = useStyles();
 
-// implement the instruments how the tags were implemented 
+    const dispatch = useDispatch();
+
+    const classes = useStyles();
     return(
         <Card className={classes.card}>
-           <Typography variant='h6'>{`Title: ${song.title}`}</Typography>
+           <Typography variant='h4'>{song.title}</Typography>
         <div className={classes.overlay}>
-            <Typography variant='h6'>{`Writer: ${song.composer}`}</Typography>
+            <Typography color='textSecondary' variant='h6'>{song.composer}</Typography>
             <Typography varient='h6'>{`Original Key: ${song.originalKey}`}</Typography>
-            <Typography varient='h8' color='textSecondary'>Instruments: {song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
+            <Typography varient='h8' color='textSecondary'>{song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
         </div>
         <div className={classes.overlay2}>
         </div>
         <CardContent>
-            <Typography className={classes.title} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
+            <Typography component='p' className={classes.title} variant='h8'gutterBottom>Notes: {song.otherNotes}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-            <Button size='small' color='primary' onClick={()=>{}}>
+            <Button size='small' color='primary' onClick={()=>dispatch(deleteSong(song._id))}>
                 Delete
             </Button>
             <Button style={{color:'Blue'}} size='small' onClick={()=>{setSongId(song._id)}}>

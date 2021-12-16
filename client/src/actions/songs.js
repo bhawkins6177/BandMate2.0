@@ -30,7 +30,17 @@ export const updateSong = (id, song) => async (dispatch) => {
 
         dispatch({ type: 'UPDATE', payload: data})
     } catch(err) {
-        console.log(err.message)
+        console.log(err)
     }
 
+}
+
+export const deleteSong = (id) => async (dispatch) => {
+    try {
+        await api.deleteSong(id);
+
+        dispatch({type:'DELETE', payload: id})
+    } catch (err) {
+        console.log(err);
+    }
 }
