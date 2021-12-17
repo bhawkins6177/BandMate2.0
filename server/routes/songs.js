@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', getSongs);
 router.post('/', createSong);
-router.patch('/:id', updateSong); //used to update existing docs
+router.patch('/:id', updateSong); 
 router.delete('/:id',deleteSong);
 
 export default router;

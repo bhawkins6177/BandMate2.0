@@ -42,11 +42,11 @@ export const updateSong = async (req, res) => {
 
 export const deleteSong = async (req, res) => {
     const { id } = req.params;
-    const song = req.body;
+    // const song = req.body;
     console.log('did delete work??')
     if(!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('Post with that ID does not exist')
-
+// check below
     const deleteSong = await SongInstance.findByIdAndRemove(id)
 
     res.json({message: 'Song has been deleted'}); 

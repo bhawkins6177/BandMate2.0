@@ -2,9 +2,10 @@ import React from "react";
 import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import {deleteSong} from "../../../actions/songs";
-import useStyles from './styles'       // my styles are not working for some reason
+import useStyles from './styles';    // you need to adjust the styles here, when you want to remove the '.' and give it a try
+// my styles are not working for some reason
 
-// no icons, didnt work last time not sure why 
+
 
 
 
@@ -12,21 +13,18 @@ import useStyles from './styles'       // my styles are not working for some rea
 const Song = ({song, setSongId}) => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    
-
-    
     return(
-        <Card className={classes.card}>
+        <Card className={classes.cardS}>
            <Typography variant='h4'>{song.title}</Typography>
         <div className={classes.overlay}>
-            <Typography color='textSecondary' variant='h6'>{song.composer}</Typography>
+            <Typography variant='h4' color="textPrimary">{song.composer}</Typography>
             <Typography varient='h6'>{`Original Key: ${song.originalKey}`}</Typography>
             <Typography varient='h6' color='textSecondary'>{song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
         </div>
         <div className={classes.overlay2}>
         </div>
         <CardContent>
-            <Typography component='p' className={classes.title} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
+            <Typography variant="h6"component='p' color="Textsecondary" className={classes.notes} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
             <Button size='small' color='primary' onClick={()=>dispatch(deleteSong(song._id))}>
