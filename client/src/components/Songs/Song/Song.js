@@ -24,7 +24,7 @@ const Song = ({song, setSongId}) => {
         <div className={classes.overlay2}>
         </div>
         <CardContent>
-            <Typography variant="h6"component='p' color="Textsecondary" className={classes.notes} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
+            <Typography variant="h6"component='p' color="textSecondary" className={classes.notes} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
             <Button size='small' color='primary' onClick={()=>dispatch(deleteSong(song._id))}>
