@@ -1,6 +1,7 @@
 import mongoose  from "mongoose";
 
 const songSchema = mongoose.Schema({
+    name: String,
     title: String,
     composer: String,
     instruments: [String],

@@ -10,6 +10,7 @@ const SongForm = ({songId, setSongId}) => {
     const classes = useStyles();
     const song = useSelector((state)=> songId ? state.songs.find((s)=>s._id === songId): null);
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'))
 
     useEffect(()=>{
         if(song) setSongData(song)
@@ -31,19 +32,30 @@ const SongForm = ({songId, setSongId}) => {
     const handleSubmit = (e) =>{
         e.preventDefault();
         
-        
-        if(songId){
-            dispatch(updateSong(songId, songData))
+        if(songId === 0 ){// can I remove the === 0 part? 0 means false so I think so
+            dispatch(createSong({...songData, name: user?.result?.name}));
+            
         } else {
-            dispatch(createSong(songData));
+            dispatch(updateSong(songId,{...songData, name: user?.result?.name}))
+            //dispatch(updateSong(songId, songData))
         }
         clear();
     }
+// check the above code for issues later
 
+if(!user?.result?.name) {
+    return(
+        <Paper className={classes.paper}>
+            <Typography variant='h6' align='center'>
+                Please Sign In to managing you Band!
+            </Typography>
+        </Paper>
+    )
+}
 
     const clear = () =>{ 
         //e.preventDefault();
-        setSongId(null);
+        setSongId(0);
         setSongData({
         title: '',
         composer: '',

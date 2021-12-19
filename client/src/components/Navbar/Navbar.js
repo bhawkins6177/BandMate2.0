@@ -20,7 +20,7 @@ const Navbar = () => {
         // FIX BUG name in navbar is only correct on refresh.
 
         setUser(JSON.parse(localStorage.getItem('profile')))
-    },[location])
+    },[location]);
 
     const logout = () => {
         dispatch({ type: "LOGOUT"})

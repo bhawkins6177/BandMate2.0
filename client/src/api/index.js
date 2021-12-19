@@ -1,6 +1,14 @@
 import axios from 'axios';
 
 const API = axios.create({baseURL: 'http://localhost:5000'});
+// need to send token to backend for varification
+API.interceptors.request.use((req)=>{
+    if(localStorage.getItem('profile')){
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+
+    }
+    return req
+});
 
 
 //const url = 'http://localhost:5000/songs'

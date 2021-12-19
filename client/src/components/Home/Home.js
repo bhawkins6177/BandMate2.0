@@ -9,7 +9,7 @@ import { getSongs } from '../../actions/songs';
 
 const Home = () => {
 
-    const [songId, setSongId] = useState(null);
+    const [songId, setSongId] = useState(0);
    // const classes = useStyles();
     const dispatch = useDispatch();
 

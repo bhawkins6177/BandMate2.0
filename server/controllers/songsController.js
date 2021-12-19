@@ -15,7 +15,7 @@ export const getSongs = async (req, res) => {
 export const createSong = async (req, res) => {
     const song = req.body;
 
-    const newSong = new SongInstance(song)
+    const newSong = new SongInstance({...song, creator: req.userId, })// maybe add WHEN it was created too?
     try {
         await newSong.save();
 
