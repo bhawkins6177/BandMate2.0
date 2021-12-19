@@ -1,6 +1,6 @@
 import SongInstance from "../models/songModel.js" 
 import mongoose from 'mongoose';
-//import songs from "../../client/src/reducers/songs.js";// THIS WAS THE PROBLEM OMG STUPID AUTOMATIC IMPORTS
+//import songs from "../../client/src/reducers/songs.js";// THIS WAS THE PROBLEM OMG AUTOMATIC IMPORTS KILLIN ME
 
 export const getSongs = async (req, res) => {
     try {

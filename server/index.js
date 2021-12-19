@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import songsRoute from './routes/songs.js'
+import userRoute from './routes/user.js'
 
 
 
@@ -21,7 +22,8 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 
-app.use('/songs', songsRoute );
+app.use('/songs', songsRoute);
+app.use('/user', userRoute);
 // how can I make the below url private? **Look up dotemv**
 //const connectionURL = 'mongodb+srv://bhawkins6177:noodle67@cluster0.jyonl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 

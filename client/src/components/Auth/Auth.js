@@ -4,6 +4,7 @@ import {Avatar, Button, Paper, Grid, Container, Typography, TextField } from "@m
 import {GoogleLogin} from 'react-google-login';
 import {useNavigate} from 'react-router-dom';
 import useStyles from "./styles"
+import {signup, signin} from '../../actions/auth'
 // why cant i get my icons to work? look up documentation
 //import LockOutlinedIcon from '@material-ui/icons/LockedOutlined';
 
@@ -12,21 +13,44 @@ const Auth = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const [isSignUp, setIsSignUp] = useState(false)
+    const [formInfo, setFormInfo] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
     const navigate = useNavigate();
-    const handleSubmit = () => {
+    
+    const handleChange = (e) => {
+        setFormInfo({...formInfo,
+        [e.target.name]: e.target.value})
+
+    }
+
+    const handleSubmit = (e) => {
+       e.preventDefault()
+       if(isSignUp){        // dispatch is always redux, signUp is the action ans we are using, and giving it the navigate(history) and the formInfo data
+            dispatch(signup(formInfo, navigate))
+          //  navigate('/')
+       } else {
+            dispatch(signin(formInfo, navigate))
+           // navigate('/')
+            
+       }
+       console.log(isSignUp);
+
        
-    }
-
-    const handleChange = () => {
-
+       //console.log(formInfo)
 
     }
+
+    
     const googleLoginSuccess = async (res) => {
         const token = res?.tokenId
-        const googleInfo = res?.profileObj // optional chaining operator fixed error "cannot get property of underfined"
-        
+        const result = res?.profileObj // optional chaining operator fixed error "cannot get property of underfined"
         try {
-            dispatch({type: 'AUTHENTICATION', data: {googleInfo, token}});
+            dispatch({type: 'AUTHENTICATION', data: {result, token}});
             // how can I redirect back to home after sign in? Something with react router?
             navigate('/')
             

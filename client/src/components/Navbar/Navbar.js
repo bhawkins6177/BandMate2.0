@@ -17,7 +17,7 @@ const Navbar = () => {
     useEffect(()=> {
         const token = user?.token
 
-        // FIX BUG name in navbar does is only correct on refresh.
+        // FIX BUG name in navbar is only correct on refresh.
 
         setUser(JSON.parse(localStorage.getItem('profile')))
     },[location])
@@ -28,7 +28,7 @@ const Navbar = () => {
         navigate('/auth')
     }
 
-    //  console.log(user.googleInfo)
+    
     return (
         <AppBar className = {classes.appBar} position="static" color="inherit">
             <div className={classes.brandContainer}>
@@ -37,8 +37,8 @@ const Navbar = () => {
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile}>
-                        <Avatar className={classes.purple} alt={user.googleInfo.name} src={user.googleInfo.imageUrl}>{user.googleInfo.name.charAt(0)}</Avatar>
-                        <Typography className={classes.userName} varient='h6'>{user.googleInfo.name}</Typography>
+                        <Avatar className={classes.purple} alt={user.result.name} src={user?.result?.imageUrl}>{user?.result?.name?.charAt(0)}</Avatar>
+                        <Typography className={classes.userName} varient='h6'>{user?.result?.name}</Typography>
                         <Button varient="contained" className={classes.logout} color='secondary' onClick={logout}>Logout</Button>
                     </div>
                 ) : (

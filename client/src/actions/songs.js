@@ -2,11 +2,11 @@ import * as api from '../api';
 
 // action creators are functions that return an action, an action is just an object that has a type: and a payload:
 
-// wow redux-thunk has weird syntax 0_0
+// I need to use redux-thunk for async actions
 export const getSongs = () => async (dispatch) => {
 
     try {
-        const { data } = await api.fetchSongs(); 
+        const { data } = await api.fetchSongs(); //making an api request to our api server
 
         dispatch({ type: 'FETCH_ALL', payload: data })
     } catch (err) {
@@ -16,7 +16,7 @@ export const getSongs = () => async (dispatch) => {
 
 export const createSong = (song) => async(dispatch) => {
     try {
-        const { data } = await api.createSong(song)//making an api request to our api server
+        const { data } = await api.createSong(song)
 
         dispatch({ type: 'CREATE', payload: data});
     } catch (err){
