@@ -25,7 +25,7 @@ app.use(cors());
 app.use('/songs', songsRoute);
 app.use('/user', userRoute);
 // how can I make the below url private? **Look up dotemv**
-//const connectionURL = 'mongodb+srv://bhawkins6177:noodle67@cluster0.jyonl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const connectionURL = 'mongodb+srv://bhawkins6177:noodle67@cluster0.jyonl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 const port = process.env.PORT || 5000; // if you have issues change his to 3000 or 4000;
 

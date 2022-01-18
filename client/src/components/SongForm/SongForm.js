@@ -47,7 +47,7 @@ if(!user?.result?.name) {
     return(
         <Paper className={classes.paper}>
             <Typography variant='h6' align='center'>
-                Please Sign In to managing you Band!
+                Please Sign In to start managing your Band!
             </Typography>
         </Paper>
     )

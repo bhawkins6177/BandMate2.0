@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: 'http://localhost:5000'});
+const API = axios.create({baseURL: 'https://bandmate2.herokuapp.com'});
 // need to send token to backend for varification
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('profile')){

@@ -73,7 +73,7 @@ const Auth = () => {
             <Paper className={classes.paper} elevation={3}>
                 <Avatar className={classes.avatar}>
                 </Avatar>
-                <Typography variant="h5">{isSignUp ? 'Sign UP' : 'Sign In'}</Typography>
+                <Typography variant="h5">{isSignUp ? 'Sign Up' : 'Sign In'}</Typography>
                 <form className={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {
