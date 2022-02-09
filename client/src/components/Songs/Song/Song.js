@@ -15,16 +15,16 @@ const Song = ({song, setSongId}) => {
     const classes = useStyles();
     return(
         <Card className={classes.cardS}>
-           <Typography variant='h4'>{song.title}</Typography>
+           <Typography variant='h4' className={classes.title}>{song.title}</Typography>
         <div className={classes.overlay}>
-            <Typography variant='h4' color="textPrimary">{song.composer}</Typography>
-            <Typography varient='h6'>{`Original Key: ${song.originalKey}`}</Typography>
+            <Typography variant='h6' color="textSecondary">{song.composer}</Typography>
+            <Typography color = 'textSecondary' varient='h6'>{`Original Key: ${song.originalKey}`}</Typography>
             <Typography varient='h6' color='textSecondary'>{song.instruments.map((instrument)=>`${instrument}, `)}</Typography>
         </div>
         <div className={classes.overlay2}>
         </div>
         <CardContent>
-            <Typography variant="h6"component='p' color="textSecondary" className={classes.notes} variant='h6'gutterBottom>Notes: {song.otherNotes}</Typography>
+            <Typography variant="h6"component='p' color="textSecondary" className={classes.notes} gutterBottom>Notes: {song.otherNotes}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
             <Button size='small' color='primary' onClick={()=>dispatch(deleteSong(song._id))}>

@@ -52,4 +52,8 @@ export default makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    title: {
+        paddingLeft: '40px'
+        
+    }
 })

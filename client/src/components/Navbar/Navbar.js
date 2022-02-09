@@ -44,6 +44,7 @@ const Navbar = () => {
                 ) : (
                     <Button component={Link} to='/auth' varient='contained' color='primary'>Sign In</Button>
                 )}
+                <Button component={Link} to='/about' varient='contained' color="primary">About</Button>
             </Toolbar>
         </AppBar>
     )
