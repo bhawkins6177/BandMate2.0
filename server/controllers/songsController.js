@@ -30,7 +30,7 @@ export const updateSong = async (req, res) => {
     const song = req.body;
 
     if(!mongoose.Types.ObjectId.isValid(_id))
-    return res.status(404).send('Post with that ID does not exist')
+    return res.status(404).send('Song with that ID does not exist')
 
    // {...song, _id} if you need to replace "song" on line 37 with this object
 
