@@ -43,15 +43,16 @@ const SongForm = ({songId, setSongId}) => {
     }
 // check the above code for issues later
 
-if(!user?.result?.name) {
-    return(
-        <Paper className={classes.paper}>
-            <Typography variant='h6' align='center'>
-                Please Sign In to start managing your Band!
-            </Typography>
-        </Paper>
-    )
-}
+// disabled so people can use the app withou signing in
+// if(!user?.result?.name) {
+//     return(
+//         <Paper className={classes.paper}>
+//             <Typography variant='h6' align='center'>
+//                 Please Sign In to start managing your Band!
+//             </Typography>
+//         </Paper>
+//     )
+// }
 
     const clear = () =>{ 
         //e.preventDefault();

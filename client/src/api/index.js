@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+// 'https://bandmate2.herokuapp.com'
 const API = axios.create({baseURL: 'https://bandmate2.herokuapp.com'});
 // need to send token to backend for varification
 API.interceptors.request.use((req)=>{
@@ -11,7 +11,7 @@ API.interceptors.request.use((req)=>{
 });
 
 
-//const url = 'http://localhost:5000/songs'
+//const url = 'http://localhost:5000'
 
 export const createSong= (newSong) => API.post('/songs', newSong);
 
